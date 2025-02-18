@@ -1,5 +1,5 @@
 # Use multi-stage builds to reduce the size of the final image
-FROM python:3.10-slim as builder
+FROM python:3.13.2-slim as builder
 
 ENV PYTHONFAULTHANDLER=1 \
     PYTHONUNBUFFERED=1 \ 
@@ -21,7 +21,7 @@ COPY poetry.lock pyproject.toml poetry.toml ./
 RUN  poetry install --no-interaction --no-ansi --no-root --without dev,lint,extras
 
 
-FROM python:3.10-slim
+FROM python:3.13.2-slim
 
 WORKDIR /app
 
